@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Cafeteria Tatiaxca</string>
+
+    <string-array name="Cafe">
+        <item>Capuchino</item>
+        <item>Vainilla</item>
+        <item>Caramelo</item>
+        <item>Mazapan</item>
+        <item>Oreo</item>
+        <item>Moka</item>
+        <item>Cajeta</item>
+        <item>Chai</item>
+    </string-array>
+
+    <string-array name="tes">
+        <item>Matcha</item>
+        <item>Locura de moras</item>
+        <item>Ponche de guayaba</item>
+        <item>Fresa kiwi</item>
+        <item>Chai</item>
+    </string-array>
+</resources>

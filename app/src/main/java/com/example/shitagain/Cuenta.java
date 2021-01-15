@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class Cuenta extends AppCompatActivity {
     Button btnpago;
     TextView txtfin;
-    public static Integer chi;
+ //   public static Integer chi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +20,10 @@ public class Cuenta extends AppCompatActivity {
         btnpago.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtfin.setText(Bebidas.orden);
-                txtfin.setText("Precio:$"+chi.toString());
-                chi=chi+Bebidas.total;
+               // txtfin.setText(Bebidas.orden);
+               // txtfin.setText("Precio:$"+chi.toString());
+               // chi=chi+Bebidas.total;
+
             }
         });
 

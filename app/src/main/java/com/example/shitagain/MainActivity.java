@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
+import android.util.Log;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +30,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    public static String Nombre, Correo;
+    private String url="http://servidorisaac.us-west-1.elasticbeanstalk.com/empleados/getusuario";
+    public static String Puesto, Correo;
     private Button btning;
     private TextView txtpueba;
     private EditText txtcorreo,txtcontra;
@@ -47,38 +49,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postData();
-                Clickbut(v);
+                clihome(v);
             }
         });
     }
 
-    public void  Clickbut(View view){
+    public void clihome(View v){
         NavDrawerr.redirecActivity(this,NavDrawerr.class);
+
     }
     public void postData() {
         txtcorreo=(EditText)findViewById(R.id.txtcorreo);
         txtcontra=(EditText)findViewById(R.id.txtcontra);
-            String url = "http://servidorisaac.us-west-1.elasticbeanstalk.com/empleados/getusuario";
+        final String correo=txtcorreo.getText().toString().trim();
+        final String contra=txtcontra.getText().toString().trim();
+        url = "http://servidorisaac.us-west-1.elasticbeanstalk.com/empleados/getusuario";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
                             txtpueba.setText("Datos del usuario:" + response.toString());
-                            parseData(response);
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }) {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("correo", txtcorreo.toString());
-                    params.put("contra", txtcontra.toString());
+                    params.put("correo", correo);
+                    params.put("contra", contra);
 
                     return params;
                 }
@@ -94,14 +98,13 @@ public class MainActivity extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject(response);
             if (jsonObject.getString("status").equals("true")) {
-                JSONArray dataArray = jsonObject.getJSONArray("id_usuarios");
+                JSONArray dataArray = jsonObject.getJSONArray("");
                 for (int i = 0; i < dataArray.length(); i++) {
-
                     JSONObject dataobj = dataArray.getJSONObject(i);
-                    Nombre = dataobj.getString("name");
-                    Correo = dataobj.getString("hobby");
-                }
+                        Correo = dataobj.getString("correo");
+                        Puesto = dataobj.getString("puesto");
 
+                }
                 Intent intent = new Intent(MainActivity.this,NavDrawerr.class);
                 startActivity(intent);
             }
@@ -110,4 +113,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }

@@ -4,37 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.RadioButton;
-import android.widget.Spinner;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
-
 public class Bebidas extends AppCompatActivity {
-    public static String siz,ex,fla,orden;
+  /*  public static String siz,ex,fla,orden;
     public static Integer pre,cos,total,i;
-
     CheckBox sho,alm,bost;
     RadioButton g,m,c;
-    Button btncapu, btnfrapp, btntisana, btnrocas;
     Spinner sabor,jarabe;
+   */
+    Button btncapu, btnfrapp, btntisana, btnrocas;
     DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bebidas);
-        setContentView(R.layout.bottom_cafes);
-        setContentView(R.layout.bottom_tisa);
+    //    setContentView(R.layout.bottom_cafes);
+      //  setContentView(R.layout.bottom_tisa);
         drawerLayout=findViewById(R.id.drawer_layout);
-        sabor=findViewById(R.id.sabor);
-        jarabe=findViewById(R.id.jarabe);
         btncapu=findViewById(R.id.btncapu);
         btnfrapp=findViewById(R.id.btnfrapp);
         btntisana=findViewById(R.id.btntisana);
         btnrocas=findViewById(R.id.btnrocas);
+      /*  sabor=findViewById(R.id.sabor);
+        jarabe=findViewById(R.id.jarabe);
         sho=(CheckBox)findViewById(R.id.sho);
         alm=(CheckBox) findViewById(R.id.alm);
         bost=(CheckBox) findViewById(R.id.bost);
@@ -45,8 +40,10 @@ public class Bebidas extends AppCompatActivity {
         String[] Cafe=getResources().getStringArray(R.array.Cafe);
 
 
+       */
 
-        sabor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+       /* sabor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 i=position;
@@ -60,7 +57,7 @@ public class Bebidas extends AppCompatActivity {
                 i=position;
                 fla=Cafe[i];
             }
-        });
+        }); */
 
 
         btncapu.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +77,7 @@ public class Bebidas extends AppCompatActivity {
         btnfrapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 sheetcafe();
             }
         });
@@ -93,20 +91,21 @@ public class Bebidas extends AppCompatActivity {
     }
 
     public void sheetcafe(){
-        BottomSheetDialog capuchino=new BottomSheetDialog(Bebidas.this);
+      BottomSheetDialog capuchino=new BottomSheetDialog(Bebidas.this);
         capuchino.setContentView(R.layout.bottom_cafes);
         capuchino.setCanceledOnTouchOutside(false);
         Button btncue=capuchino.findViewById(R.id.btncue);
-
         btncue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onclicksize(v);
-                total=pre+cos;
+                //onclicksize(v);
+                /*total=pre+cos;
                 orden="\nBebida sabor:"+fla+" Tamaño"+siz+
                         "\n Extras:"+ex+
                         "\n Precio: $"+total.toString()+
                         "\n_________________________________";
+
+                 */
 
             }
         });
@@ -121,16 +120,18 @@ public class Bebidas extends AppCompatActivity {
         btncuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onclicksize(v);
-                total=cos;
+               // onclicksize(v);
+               /* total=cos;
                 orden="Bebida sabor:"+fla+" Tamaño"+siz+
                         "\n Precio: $"+total.toString();
+
+                */
             }
         });
         ti.show();
     }
 
-    public void onclicksize(View view){
+  /*  public void onclicksize(View view){
         boolean chec=((RadioButton)view).isChecked();
         switch (view.getId()){
             case R.id.g:
@@ -173,7 +174,7 @@ public class Bebidas extends AppCompatActivity {
         }
     }
 
-
+*/
 
     public void ClickMenu(View view){
         NavDrawerr.openDrawer(drawerLayout);

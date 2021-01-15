@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtcontra"
         android:background="@drawable/edicionboton"
-        android:onClick="Clickbut"/>
+        android:onClick="clihome"/>
 
     <TextView
         android:id="@+id/txtprueba"
